@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +17,13 @@ namespace Time_Overlay
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Form1 first = new Form1();
+            
+            //var th = new Thread(() => Application.Run(first));
+
+            //th.Start();
+            Application.Run(new Form2());
+            //th.Join();
         }
     }
 }
