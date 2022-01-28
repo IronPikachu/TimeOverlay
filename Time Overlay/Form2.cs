@@ -14,54 +14,45 @@ namespace Time_Overlay
     public partial class Form2 : Form
     {
         private Form1 form1 = null;
-        Thread th;
         public Form2()
         {
             form1 = new Form1();
             InitializeComponent();
-            
-            th = new Thread(() => Application.Run(this.form1));
-            th.Start();
+            form1.Show();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
-        private int locY = 500;
-        private int locX = 500;
         //Up
         private void button4_Click(object sender, EventArgs e)
         {
-            locY -= 10;
-            form1.moveLocation(locX, locY);
+            form1.moveLocation(0, -5);
         }
 
         //Left
         private void button2_Click(object sender, EventArgs e)
         {
-            locX -= 10;
-            form1.moveLocation(locX, locY);
+            form1.moveLocation(-5, 0);
         }
 
         //Right
         private void button3_Click(object sender, EventArgs e)
         {
-            locX += 10;
-            form1.moveLocation(++locX, locY);
+            form1.moveLocation(5, 0);
         }
 
         //Down
         private void button1_Click(object sender, EventArgs e)
         {
-            locY += 10;
-            form1.moveLocation(locX, locY);
+            form1.moveLocation(0, 5);
         }
 
         //Change Screen
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDown1.Value = numericUpDown1.Value % 4;
+            numericUpDown1.Value = numericUpDown1.Value % Screen.AllScreens.Length;
             form1.moveScreen((int)numericUpDown1.Value);
         }
 
@@ -102,11 +93,6 @@ namespace Time_Overlay
             form1.toggleVisibility(checkBox4.Checked);
         }
 
-        ~Form2()
-        {
-            th.Join();
-        }
-
         //Red
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -123,6 +109,11 @@ namespace Time_Overlay
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             form1.labelColor(Color.Blue);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

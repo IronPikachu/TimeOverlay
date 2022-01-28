@@ -38,17 +38,19 @@ namespace Time_Overlay
 
         public void moveScreen(int index)
         {
+            WindowState = FormWindowState.Normal;
             this.Location = Screen.AllScreens[index].WorkingArea.Location;
+            WindowState = FormWindowState.Maximized;
         }
 
         public void moveLocation(int dX, int dY)
         {
-            this.Location = new Point(dX, dY);
+            this.label1.Location = new Point(label1.Location.X + dX, label1.Location.Y + dY);            
         }
 
         public void setLabelFontSize(int size)
         {
-
+            this.label1.Font = new Font("Microsoft Sans Serif", size, FontStyle.Regular);
         }
 
         public void setHour(bool toggle)
